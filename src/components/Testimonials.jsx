@@ -29,7 +29,7 @@ const Container = styled.div`
 
 const SectionTitle = styled.h2`
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
   color: #000000;
   position: relative;

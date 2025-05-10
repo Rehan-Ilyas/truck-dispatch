@@ -47,7 +47,7 @@ const Container = styled.div`
 
 const SectionTitle = styled.h2`
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
   margin-bottom: 3rem;
   color: #ffffff;
   position: relative;
@@ -70,13 +70,7 @@ const SectionTitle = styled.h2`
 
 // Trucks Section Styles
 const TrucksSection = styled.div`
-  background: rgba(255, 255, 255, 0.05);
-  padding: 4rem 2rem;
-  border-radius: 20px;
-  margin-bottom: 4rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+
 `;
 
 const TrucksGrid = styled.div`
@@ -107,13 +101,7 @@ const TruckCard = styled(motion.div)`
 
 // RTS Financial Section Styles
 const FinancialSection = styled.div`
-  background: rgba(255, 255, 255, 0.05);
-  padding: 4rem 2rem;
-  border-radius: 20px;
-  margin-bottom: 4rem;
-  color: white;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4rem 0rem;
 `;
 
 const FinancialCard = styled(motion.div)`
@@ -135,12 +123,8 @@ const FinancialCard = styled(motion.div)`
 
 // Tracking Section Styles
 const TrackingSection = styled.div`
-  background: rgba(255, 255, 255, 0.05);
-  padding: 4rem 2rem;
-  border-radius: 20px;
-  color: white;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4rem 0rem;
+  
 `;
 
 const TrackingCard = styled(motion.div)`

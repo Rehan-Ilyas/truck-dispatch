@@ -50,7 +50,7 @@ const Logo = styled(Link)`
   gap: 0.5rem;
 
   img {
-    height: 72px;
+    height: 58px;
     width: auto;
   }
 `;
