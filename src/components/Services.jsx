@@ -140,36 +140,90 @@ const Services = () => {
       title: 'Box Truck',
       description: 'Perfect for local and regional deliveries with our box truck services.',
       path: '/services/box-truck',
+      features: [
+        'Capacity: 26,000 lbs',
+        'Cargo Space: 1,700 cubic feet',
+        'Perfect for local and regional deliveries',
+        'Equipped with liftgate for easy loading',
+        '24/7 tracking and monitoring',
+        'Experienced drivers with clean records'
+      ],
+      longDescription: 'Our box truck services are perfect for local and regional deliveries. With a capacity of up to 26,000 lbs and 1,700 cubic feet, our box trucks can handle a wide range of cargo types. We ensure safe and timely delivery of your goods with our experienced drivers and modern fleet.'
     },
     {
       image: 'dry-van-removebg-preview.png',
       title: 'Dry Van',
       description: 'Secure and efficient dry van transportation for your cargo.',
       path: '/services/dry-van',
+      features: [
+        'Weather-resistant containers',
+        'Advanced security features',
+        'Multiple size options available',
+        'Real-time cargo tracking',
+        'Temperature monitoring',
+        'Dedicated customer support'
+      ],
+      longDescription: 'Our dry van services provide secure and efficient transportation for your cargo. With weather-resistant containers and advanced security features, your goods will arrive safely at their destination. We offer multiple size options to accommodate your specific needs.'
     },
     {
       image: 'refer-truck-removebg-preview.png',
       title: 'Reefer',
       description: 'Temperature-controlled transportation for sensitive goods.',
       path: '/services/reefer',
+      features: [
+        'Temperature range: -20°F to 70°F',
+        '24/7 temperature monitoring',
+        'Advanced cooling systems',
+        'Real-time temperature alerts',
+        'Experienced cold chain logistics',
+        'Compliance with food safety standards'
+      ],
+      longDescription: 'Our refrigerated truck services ensure your temperature-sensitive goods are transported at the perfect temperature. With state-of-the-art cooling systems and 24/7 monitoring, your perishable items are in safe hands. We maintain strict temperature control throughout the journey.'
     },
     {
       image: 'power_only-removebg-preview.png',
       title: 'Power Only',
       description: 'Flexible power-only solutions for your transportation needs.',
       path: '/services/power-only',
+      features: [
+        'Flexible scheduling',
+        'Experienced drivers',
+        'Multiple truck options',
+        '24/7 dispatch support',
+        'Real-time tracking',
+        'Competitive rates'
+      ],
+      longDescription: 'Our power-only services provide flexible solutions for your transportation needs. We supply the truck and driver while you provide the trailer, giving you maximum flexibility and control. Perfect for businesses that own their own trailers.'
     },
     {
       image: 'https://purepng.com/public/uploads/thumbnail//white-truck-gcg.png',
       title: 'Hotshot',
       description: 'Fast and reliable hotshot services for time-sensitive deliveries.',
       path: '/services/hotshot',
+      features: [
+        'Fast delivery times',
+        'Smaller, agile vehicles',
+        'Direct point-to-point service',
+        'Real-time tracking',
+        'Flexible scheduling',
+        'Competitive pricing'
+      ],
+      longDescription: 'Our hotshot services are perfect for time-sensitive deliveries. With smaller, more agile vehicles, we can get your cargo where it needs to be quickly and efficiently. Ideal for urgent shipments and smaller loads.'
     },
     {
       image: 'flat-bed.jpg',
       title: 'Flatbed / Step Deck',
       description: 'Specialized transportation for oversized and heavy loads.',
       path: '/services/flatbed',
+      features: [
+        'Capacity up to 48,000 lbs',
+        'Multiple deck height options',
+        'Specialized loading equipment',
+        'Oversized load permits',
+        'Experienced drivers',
+        '24/7 support'
+      ],
+      longDescription: 'Our flatbed and step deck services are designed for oversized and heavy loads. With specialized equipment and experienced drivers, we can handle even the most challenging cargo. Perfect for construction materials, machinery, and other oversized items.'
     },
   ];
 

@@ -43,14 +43,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/:serviceType" element={<ServiceDetail />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/services/box-truck" element={<ServiceDetail />} />
-            <Route path="/services/dry-van" element={<ServiceDetail />} />
-            <Route path="/services/reefer" element={<ServiceDetail />} />
-            <Route path="/services/power-only" element={<ServiceDetail />} />
-            <Route path="/services/hotshot" element={<ServiceDetail />} />
-            <Route path="/services/flatbed" element={<ServiceDetail />} />
           </Routes>
         </MainContent>
         <Footer />

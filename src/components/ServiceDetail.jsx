@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { FaArrowLeft, FaCheck } from 'react-icons/fa';
 
@@ -56,6 +56,8 @@ const DetailContent = styled.div`
     gap: 2rem;
   }
 `;
+
+
 
 const DetailText = styled.div`
   h2 {
@@ -137,10 +139,12 @@ const BackButton = styled(Link)`
 
 const ServiceDetail = () => {
   const { serviceType } = useParams();
+  const navigate = useNavigate();
 
-  const serviceDetails = {
+  const services = {
     'box-truck': {
       title: 'Box Truck Services',
+      image:   '/box-truck-removebg-preview.png',
       description: 'Our box truck services are perfect for local and regional deliveries. With a capacity of up to 26,000 lbs and 1,700 cubic feet, our box trucks can handle a wide range of cargo types.',
       features: [
         'Capacity: 26,000 lbs',
@@ -153,6 +157,7 @@ const ServiceDetail = () => {
     },
     'dry-van': {
       title: 'Dry Van Services',
+      image: '/dry-van-removebg-preview.png',
       description: 'Our dry van services provide secure and efficient transportation for your cargo. With weather-resistant containers and advanced security features, your goods will arrive safely at their destination.',
       features: [
         'Weather-resistant containers',
@@ -165,6 +170,7 @@ const ServiceDetail = () => {
     },
     'reefer': {
       title: 'Reefer Services',
+      image: '/refer-truck-removebg-preview.png',
       description: 'Our refrigerated truck services ensure your temperature-sensitive goods are transported at the perfect temperature. With state-of-the-art cooling systems and 24/7 monitoring, your perishable items are in safe hands.',
       features: [
         'Temperature range: -20°F to 70°F',
@@ -177,6 +183,7 @@ const ServiceDetail = () => {
     },
     'power-only': {
       title: 'Power Only Services',
+      image: '/power_only-removebg-preview.png',
       description: 'Our power-only services provide flexible solutions for your transportation needs. We supply the truck and driver while you provide the trailer, giving you maximum flexibility and control.',
       features: [
         'Flexible scheduling',
@@ -189,6 +196,7 @@ const ServiceDetail = () => {
     },
     'hotshot': {
       title: 'Hotshot Services',
+      image: '/hotshot-truck.png',
       description: 'Our hotshot services are perfect for time-sensitive deliveries. With smaller, more agile vehicles, we can get your cargo where it needs to be quickly and efficiently.',
       features: [
         'Fast delivery times',
@@ -201,6 +209,7 @@ const ServiceDetail = () => {
     },
     'flatbed': {
       title: 'Flatbed / Step Deck Services',
+      image: '/flat-bed.jpg',
       description: 'Our flatbed and step deck services are designed for oversized and heavy loads. With specialized equipment and experienced drivers, we can handle even the most challenging cargo.',
       features: [
         'Capacity up to 48,000 lbs',
@@ -213,17 +222,23 @@ const ServiceDetail = () => {
     }
   };
 
-  const service = serviceDetails[serviceType] || serviceDetails['box-truck'];
+  const service = services[serviceType];
+
+  if (!service) {
+    navigate('/services');
+    return null;
+  }
 
   return (
     <DetailSection>
-      <HeroImage>
+      <HeroImage style={{ backgroundImage: `url(${service.image})` }}>
         <HeroContent>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
+            {service.title}
           </motion.h1>
         </HeroContent>
       </HeroImage>
