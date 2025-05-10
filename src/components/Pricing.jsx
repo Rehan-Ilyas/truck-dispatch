@@ -5,24 +5,35 @@ import { Link } from 'react-router-dom';
 import { FaCheck, FaStar } from 'react-icons/fa';
 
 const PricingSection = styled.section`
-  padding: 6rem 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+  padding: 5rem 1.5rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
   position: relative;
   overflow: hidden;
+  scroll-margin-top: 80px;
 
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+    z-index: 0;
+  }
+
+  @keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 `;
 
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
@@ -30,107 +41,92 @@ const Container = styled.div`
 
 const SectionTitle = styled.h2`
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2.8rem;
+  color: #ffffff;
   margin-bottom: 1rem;
-  color: #2c3e50;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
   position: relative;
-  
-  &:after {
+
+  &::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
     width: 80px;
     height: 3px;
-    background: linear-gradient(to right, #ff6b6b, #ff8e8e);
+    background: #e94560;
+    border-radius: 1.5px;
   }
 `;
 
 const SectionSubtitle = styled.p`
   text-align: center;
   font-size: 1.1rem;
-  color: #666;
-  margin-bottom: 3rem;
-  max-width: 600px;
+  color: #d1d1d1;
+  margin-bottom: 3.5rem;
+  max-width: 550px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.7;
 `;
 
 const PricingGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 2rem;
-  padding: 1rem;
 `;
 
 const PricingCard = styled(motion.div)`
-  background: white;
-  padding: 2.5rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2.5rem;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
   position: relative;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  max-width: 350px;
+  width: 100%;
   overflow: hidden;
 
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  }
-
-  ${props => props.popular && `
-    border: 2px solid #ff6b6b;
     transform: scale(1.05);
-    
-    &:hover {
-      transform: scale(1.05) translateY(-10px);
-    }
-  `}
-`;
-
-const PopularBadge = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: linear-gradient(to right, #ff6b6b, #ff8e8e);
-  color: white;
-  padding: 0.5rem 1.5rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  border-radius: 0 15px 0 15px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  svg {
-    font-size: 1rem;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: #e94560;
   }
-`;
 
-const PlanTitle = styled.h3`
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #2c3e50;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #e94560, #0f3460);
+    z-index: 1;
+  }
 `;
 
 const PriceContainer = styled.div`
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 `;
 
 const Price = styled.div`
-  font-size: 3rem;
-  font-weight: bold;
-  color: #2c3e50;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
 
   span {
-    font-size: 1rem;
-    color: #666;
+    font-size: 0.9rem;
+    color: #d1d1d1;
     font-weight: normal;
   }
 `;
@@ -138,18 +134,27 @@ const Price = styled.div`
 const FeaturesList = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 0 0 2rem 0;
+  margin: 1.5rem 0;
 
   li {
     display: flex;
     align-items: center;
     gap: 0.8rem;
     margin-bottom: 1rem;
-    color: #666;
-    font-size: 0.95rem;
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(5px);
+    }
 
     svg {
-      color: #28a745;
+      color: #e94560;
       font-size: 1rem;
     }
   }
@@ -157,91 +162,68 @@ const FeaturesList = styled.ul`
 
 const CTAButton = styled(Link)`
   display: inline-block;
-  padding: 0.8rem 2rem;
-  background: ${props => props.popular ? 'linear-gradient(to right, #ff6b6b, #ff8e8e)' : '#2c3e50'};
-  color: white;
+  padding: 0.8rem 2.5rem;
+  background: #e94560;
+  color: #ffffff;
   text-decoration: none;
   border-radius: 25px;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1rem;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
 
   &:hover {
+    background: #ff5776;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background: ${props => props.popular ? 'linear-gradient(to right, #ff5252, #ff7676)' : '#1a252f'};
+    box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4);
   }
 `;
 
 const Pricing = () => {
-  const packages = [
-    {
-      title: 'Our Authority',
-      features: [
-        'Box Truck - 10%',
-        'Hot Shot - 5%',
-        'FlatBed/StepDeck - 5%',
-        'Dry Van - 5%',
-      ],
-    },
-    {
-      title: 'Your Authority',
-    
-      features: [
-        'Box Truck - 10%',
-        'Hot Shot - 5%',
-        'FlatBed/StepDeck - 5%',
-        'Dry Van - 5%',
-      ],
-      popular: true,
-    },
-
-  ];
-
   return (
-    <PricingSection>
+    <PricingSection id="pricing">
       <Container>
         <SectionTitle>Pricing Plans</SectionTitle>
         <SectionSubtitle>
-          Choose the perfect plan for your business needs. All plans include our core features
-          with additional benefits as you scale up.
+          Select a plan tailored to your business needs. Enjoy our core features with enhanced benefits as you grow.
         </SectionSubtitle>
         <PricingGrid>
-          {packages.map((pkg, index) => (
-            <PricingCard
-              key={index}
-              popular={pkg.popular}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              viewport={{ once: true }}
-            >
-              {pkg.popular && (
-                <PopularBadge>
-                  <FaStar />
-                </PopularBadge>
-              )}
-              <PlanTitle>{pkg.title}</PlanTitle>
-              <PriceContainer>
-               
-              </PriceContainer>
-              <FeaturesList>
-                {pkg.features.map((feature, i) => (
-                  <li key={i}>
-                    <FaCheck />
-                    {feature}
-                  </li>
-                ))}
-              </FeaturesList>
-              <CTAButton to="/contact" popular={pkg.popular}>
-                Get Started
-              </CTAButton>
-            </PricingCard>
-          ))}
+          <PricingCard
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <PriceContainer>
+            </PriceContainer>
+            <FeaturesList>
+              <li>
+                <FaCheck />
+                Box Truck - 10%
+              </li>
+              <li>
+                <FaCheck />
+                Hot Shot - 5%
+              </li>
+              <li>
+                <FaCheck />
+                FlatBed/StepDeck - 5%
+              </li>
+              <li>
+                <FaCheck />
+                Dry Van - 5%
+              </li>
+            </FeaturesList>
+            <CTAButton to="/contact">
+              Get Started
+            </CTAButton>
+          </PricingCard>
         </PricingGrid>
       </Container>
     </PricingSection>
   );
 };
 
-export default Pricing; 
+export default Pricing;

@@ -2,8 +2,24 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaTruck, FaBars, FaTimes, FaBox, FaSnowflake, FaRoad, FaBolt, FaShippingFast, FaLayerGroup, FaHome, FaInfoCircle, FaDollarSign, FaEnvelope, FaChevronDown } from 'react-icons/fa';
-
+import { 
+  FaTruck, 
+  FaBars, 
+  FaTimes, 
+  FaBox, 
+  FaSnowflake, 
+  FaRoad, 
+  FaBolt, 
+  FaShippingFast, 
+  FaLayerGroup, 
+  FaHome, 
+  FaInfoCircle, 
+  FaDollarSign, 
+  FaEnvelope, 
+  FaChevronDown,
+  FaMoneyBillWave,
+  FaMapMarkerAlt 
+} from 'react-icons/fa';
 
 const Nav = styled.nav`
   position: fixed;
@@ -81,6 +97,7 @@ const NavLink = styled(Link)`
   gap: 0.5rem;
   position: relative;
   padding: 0.5rem 0;
+  cursor: pointer;
 
   &::after {
     content: '';
@@ -179,7 +196,8 @@ const DropdownItem = styled(Link)`
   }
 `;
 
-const MobileNavItem = styled.div`  display: flex;
+const MobileNavItem = styled.div`
+  display: flex;
   align-items: center;
   gap: 1rem;
   width: 100%;
@@ -241,184 +259,167 @@ const Overlay = styled.div`
   }
 `;
 
+const services = [
+  { 
+    name: 'Trucks',
+    items: [
+      { name: 'Box Truck', path: '/services/box-truck', icon: <FaBox /> },
+      { name: 'Dry Van', path: '/services/dry-van', icon: <FaShippingFast /> },
+      { name: 'Reefer', path: '/services/reefer', icon: <FaSnowflake /> },
+      { name: 'Power Only', path: '/services/power-only', icon: <FaBolt /> },
+      { name: 'Hotshot', path: '/services/hotshot', icon: <FaRoad /> },
+      { name: 'Flatbed / Step Deck', path: '/services/flatbed', icon: <FaLayerGroup /> }
+    ]
+  },
+  {
+    name: 'RTS Financial',
+    items: [
+      { name: 'Financial Services', path: '/services/financial', icon: <FaMoneyBillWave /> }
+    ]
+  },
+  {
+    name: 'Tracking',
+    items: [
+      { name: 'Tracking Solutions', path: '/services/tracking', icon: <FaMapMarkerAlt /> }
+    ]
+  }
+];
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isDesktopServicesOpen, setIsDesktopServicesOpen] = useState(false);
 
-  const services = [
-    { name: 'Box Truck', path: '/services/box-truck', icon: <FaBox /> },
-    { name: 'Dry Van', path: '/services/dry-van', icon: <FaTruck /> },
-    { name: 'Reefer', path: '/services/reefer', icon: <FaSnowflake /> },
-    { name: 'Power Only', path: '/services/power-only', icon: <FaBolt /> },
-    { name: 'Hotshot', path: '/services/hotshot', icon: <FaShippingFast /> },
-    { name: 'Flatbed / Step Deck', path: '/services/flatbed', icon: <FaLayerGroup /> },
-  ];
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const closeMenu = () => {
     setIsMenuOpen(false);
-    setIsServicesOpen(false);
   };
 
-  const menuVariants = {
-    closed: {
-      x: "100%",
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut"
-      }
-    },
-    open: {
-      x: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut",
-        staggerChildren: 0.1
-      }
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      closeMenu();
     }
-  };
-
-  const itemVariants = {
-    closed: { opacity: 0, x: 20 },
-    open: { opacity: 1, x: 0 }
   };
 
   return (
     <Nav>
       <NavContainer>
         <Logo to="/">
-          <img src="/Logo.png" alt="Truck Dispatch Logo" />
+          <img src="/Logo.png" alt="Logo" />
         </Logo>
 
         <DesktopNavLinks>
-          <NavLink to="/">
-            <FaHome />
-            Home
+          <NavLink to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <FaHome /> Home
           </NavLink>
-          <NavLink to="/about">
-            <FaInfoCircle />
-            About Us
+          <NavLink as="button" onClick={() => scrollToSection('about')}>
+            <FaInfoCircle /> About
           </NavLink>
           <ServicesDropdown
             onMouseEnter={() => setIsDesktopServicesOpen(true)}
             onMouseLeave={() => setIsDesktopServicesOpen(false)}
           >
-            <FaTruck />
-            Services
-            <FaChevronDown />
-            <AnimatePresence>
-              {isDesktopServicesOpen && (
-                <DropdownMenu
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {services.map((service) => (
-                    <DropdownItem key={service.name} to={service.path}>
-                      {service.icon}
-                      {service.name}
+            <FaTruck /> Services <FaChevronDown />
+            {isDesktopServicesOpen && (
+              <DropdownMenu
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.2 }}
+              >
+                {services.map((category, index) => (
+                  <React.Fragment key={index}>
+                    <DropdownItem as="div" style={{ color: '#ff6b6b', fontWeight: 'bold', padding: '0.5rem 1rem' }}>
+                      {category.name}
                     </DropdownItem>
-                  ))}
-                </DropdownMenu>
-              )}
-            </AnimatePresence>
+                    {category.items.map((item, itemIndex) => (
+                      <DropdownItem key={itemIndex} to={item.path}>
+                        {item.icon} {item.name}
+                      </DropdownItem>
+                    ))}
+                    {index < services.length - 1 && (
+                      <div style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', margin: '0.5rem 0' }} />
+                    )}
+                  </React.Fragment>
+                ))}
+              </DropdownMenu>
+            )}
           </ServicesDropdown>
-          <NavLink to="/pricing">
-            <FaDollarSign />
-            Pricing
+          <NavLink as="button" onClick={() => scrollToSection('pricing')}>
+            <FaDollarSign /> Pricing
           </NavLink>
-          <NavLink to="/contact">
-            <FaEnvelope />
-            Contact Us
+          <NavLink as="button" onClick={() => scrollToSection('contact')}>
+            <FaEnvelope /> Contact
           </NavLink>
         </DesktopNavLinks>
 
-        <MobileMenuButton onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <MobileMenuButton onClick={toggleMenu}>
           {isMenuOpen ? <FaTimes /> : <FaBars />}
         </MobileMenuButton>
 
-        <Overlay isOpen={isMenuOpen} onClick={closeMenu} />
-        
         <AnimatePresence>
           {isMenuOpen && (
-            <NavLinks
-              isOpen={isMenuOpen}
-              variants={menuVariants}
-              initial="closed"
-              animate="open"
-              exit="closed"
-            >
-              <motion.div variants={itemVariants}>
-                <MobileNavItem as={Link} to="/" onClick={closeMenu}>
-                  <FaHome />
-                  <span>Home</span>
+            <>
+              <Overlay isOpen={isMenuOpen} onClick={closeMenu} />
+              <NavLinks
+                initial={{ x: '100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '100%' }}
+                transition={{ type: 'tween', duration: 0.3 }}
+                isOpen={isMenuOpen}
+              >
+                <MobileNavItem as={Link} to="/" onClick={() => {
+                  closeMenu();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}>
+                  <FaHome /> <span>Home</span>
                 </MobileNavItem>
-              </motion.div>
-              
-              <motion.div variants={itemVariants}>
-                <MobileNavItem as={Link} to="/about" onClick={closeMenu}>
-                  <FaInfoCircle />
-                  <span>About Us</span>
+                <MobileNavItem as="button" onClick={() => scrollToSection('about')}>
+                  <FaInfoCircle /> <span>About</span>
                 </MobileNavItem>
-              </motion.div>
-              
-              <motion.div variants={itemVariants}>
-                <MobileNavItem
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setIsServicesOpen(!isServicesOpen);
-                  }}
-                >
-                  <FaTruck />
-                  <span>Services</span>
-                  <FaChevronDown className="chevron" />
+                <MobileNavItem onClick={() => setIsServicesOpen(!isServicesOpen)}>
+                  <FaTruck /> <span>Services</span> <FaChevronDown className="chevron" />
                 </MobileNavItem>
-                
-                <AnimatePresence>
-                  {isServicesOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {services.map((service) => (
-                        <motion.div
-                          key={service.name}
-                          variants={itemVariants}
-                          initial="closed"
-                          animate="open"
-                        >
+                {isServicesOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {services.map((category, index) => (
+                      <React.Fragment key={index}>
+                        <MobileNavItem as="div" style={{ color: '#ff6b6b', fontWeight: 'bold' }}>
+                          {category.name}
+                        </MobileNavItem>
+                        {category.items.map((item, itemIndex) => (
                           <MobileNavItem
+                            key={itemIndex}
                             as={Link}
-                            to={service.path}
+                            to={item.path}
                             onClick={closeMenu}
+                            style={{ paddingLeft: '2rem' }}
                           >
-                            {service.icon}
-                            <span>{service.name}</span>
+                            {item.icon} <span>{item.name}</span>
                           </MobileNavItem>
-                        </motion.div>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-
-              <motion.div variants={itemVariants}>
-                <MobileNavItem as={Link} to="/pricing" onClick={closeMenu}>
-                  <FaDollarSign />
-                  <span>Pricing</span>
+                        ))}
+                      </React.Fragment>
+                    ))}
+                  </motion.div>
+                )}
+                <MobileNavItem as="button" onClick={() => scrollToSection('pricing')}>
+                  <FaDollarSign /> <span>Pricing</span>
                 </MobileNavItem>
-              </motion.div>
-
-              <motion.div variants={itemVariants}>
-                <MobileNavItem as={Link} to="/contact" onClick={closeMenu}>
-                  <FaEnvelope />
-                  <span>Contact Us</span>
+                <MobileNavItem as="button" onClick={() => scrollToSection('contact')}>
+                  <FaEnvelope /> <span>Contact</span>
                 </MobileNavItem>
-              </motion.div>
-            </NavLinks>
+              </NavLinks>
+            </>
           )}
         </AnimatePresence>
       </NavContainer>
@@ -426,4 +427,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;

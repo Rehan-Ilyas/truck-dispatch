@@ -5,20 +5,37 @@ import { FaTruck, FaHandshake, FaChartLine } from 'react-icons/fa';
 
 const AboutSection = styled.section`
   padding: 5rem 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 80px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
 `;
 
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 `;
 
 const SectionTitle = styled.h2`
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  color: #2c3e50;
+  color: #000000;
   position: relative;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   
   &::after {
     content: '';
@@ -28,7 +45,7 @@ const SectionTitle = styled.h2`
     transform: translateX(-50%);
     width: 80px;
     height: 3px;
-    background: linear-gradient(to right, #ff6b6b, #ff8e8e);
+    background: linear-gradient(to right,rgb(6, 7, 7), #4facfe);
   }
 `;
 
@@ -46,13 +63,13 @@ const AboutText = styled.div`
   h3 {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
-    color: #333;
+    color: #000000;
   }
 
   p {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #666;
+    color: #000000;
     margin-bottom: 1.5rem;
   }
 `;
@@ -85,23 +102,23 @@ const ValueItem = styled(motion.div)`
     bottom: -1.5rem;
     width: 50px;
     height: 3px;
-    background: #007bff;
+    background:rgb(0, 0, 0);
     transition: all 0.3s ease;
   }
 
   &:hover {
     &::after {
       width: 100px;
-      background: #ff6b6b;
+      background: #4facfe;
     }
 
     .icon-wrapper {
       transform: rotateY(180deg);
-      background: #ff6b6b;
+      background: #4facfe;
     }
 
     svg {
-      color: white;
+      color: #ffffff;
     }
   }
 
@@ -109,7 +126,7 @@ const ValueItem = styled(motion.div)`
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: #007bff;
+    background:rgb(0, 0, 0);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -119,18 +136,18 @@ const ValueItem = styled(motion.div)`
 
   svg {
     font-size: 2.5rem;
-    color: white;
+    color: #ffffff;
     transition: all 0.3s ease;
   }
 
   h4 {
     font-size: 1.4rem;
     margin-bottom: 1rem;
-    color: #333;
+    color: #000000;
   }
 
   p {
-    color: #666;
+    color: #000000;
     line-height: 1.6;
     margin: 0;
   }
@@ -156,7 +173,7 @@ const About = () => {
   ];
 
   return (
-    <AboutSection>
+    <AboutSection id="about">
       <Container>
         <SectionTitle>About Us</SectionTitle>
         <AboutContent>
@@ -198,4 +215,4 @@ const About = () => {
   );
 };
 
-export default About; 
+export default About;

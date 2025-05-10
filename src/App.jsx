@@ -27,8 +27,9 @@ const Home = () => (
     <Hero />
     <About />
     <Services />
-    <Pricing />
     <Testimonials />
+
+    <Pricing />
     <Contact />
   </>
 );
@@ -41,11 +42,8 @@ function App() {
         <MainContent>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/services/:serviceType" element={<ServiceDetail />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/contact" element={<Contact />} />
           </Routes>
         </MainContent>
         <Footer />

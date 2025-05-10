@@ -10,28 +10,65 @@ import {
 } from 'react-icons/fa';
 
 const FooterSection = styled.footer`
-  background: #333;
+  background: linear-gradient(to right, #1a1a1a, #2d2d2d);
   color: white;
   padding: 4rem 2rem 2rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, #007bff, #00bfff);
+  }
 `;
 
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 `;
 
 const FooterGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 4rem;
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 `;
 
 const FooterColumn = styled.div`
   h3 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin-bottom: 1.5rem;
     color: #fff;
+    position: relative;
+    padding-bottom: 0.5rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: #007bff;
+    }
+  }
+
+  p {
+    color: #b3b3b3;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
   }
 
   ul {
@@ -40,16 +77,15 @@ const FooterColumn = styled.div`
     margin: 0;
 
     li {
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
+      color: #b3b3b3;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
 
-      a {
-        color: #ccc;
-        text-decoration: none;
-        transition: color 0.3s ease;
-
-        &:hover {
-          color: #fff;
-        }
+      &::before {
+        content: '•';
+        color: #007bff;
       }
     }
   }
@@ -58,30 +94,40 @@ const FooterColumn = styled.div`
 const Logo = styled(Link)`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
   color: white;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 
   svg {
-    font-size: 1.8rem;
+    font-size: 2rem;
+    color: #007bff;
   }
 `;
 
 const SocialLinks = styled.div`
   display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  gap: 1.2rem;
+  margin-top: 2rem;
 
   a {
-    color: white;
+    color: #b3b3b3;
     font-size: 1.5rem;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 
     &:hover {
-      color: #007bff;
+      color: #fff;
+      background: #007bff;
+      transform: translateY(-3px);
     }
   }
 `;
@@ -90,7 +136,8 @@ const Copyright = styled.div`
   text-align: center;
   padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ccc;
+  color: #b3b3b3;
+  font-size: 0.9rem;
 `;
 
 const Footer = () => {
@@ -121,49 +168,6 @@ const Footer = () => {
                 <FaInstagram />
               </a>
             </SocialLinks>
-          </FooterColumn>
-          <FooterColumn>
-            <h3>Quick Links</h3>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">About Us</Link>
-              </li>
-              <li>
-                <Link to="/services">Services</Link>
-              </li>
-              <li>
-                <Link to="/pricing">Pricing</Link>
-              </li>
-              <li>
-                <Link to="/contact">Contact</Link>
-              </li>
-            </ul>
-          </FooterColumn>
-          <FooterColumn>
-            <h3>Services</h3>
-            <ul>
-              <li>
-                <Link to="/services/box-truck">Box Truck</Link>
-              </li>
-              <li>
-                <Link to="/services/dry-van">Dry Van</Link>
-              </li>
-              <li>
-                <Link to="/services/reefer">Reefer</Link>
-              </li>
-              <li>
-                <Link to="/services/power-only">Power Only</Link>
-              </li>
-              <li>
-                <Link to="/services/hotshot">Hotshot</Link>
-              </li>
-              <li>
-                <Link to="/services/flatbed">Flatbed / Step Deck</Link>
-              </li>
-            </ul>
           </FooterColumn>
           <FooterColumn>
             <h3>Contact Info</h3>

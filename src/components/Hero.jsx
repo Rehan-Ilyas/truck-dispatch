@@ -45,6 +45,11 @@ const Title = styled.h1`
   font-size: 3.5rem;
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 800;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Stronger shadow for contrast */
 
   @media (max-width: 768px) {
     font-size: 2.5rem;

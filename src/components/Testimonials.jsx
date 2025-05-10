@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaStar, FaQuoteLeft, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaStar, FaQuoteLeft, FaChevronLeft, FaChevronRight, FaUser } from 'react-icons/fa';
 
 const TestimonialsSection = styled.section`
   padding: 6rem 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+  background: #ffffff;
   position: relative;
   overflow: hidden;
 
@@ -16,7 +16,7 @@ const TestimonialsSection = styled.section`
     left: 0;
     width: 100%;
     height: 100%;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 `;
 
@@ -31,8 +31,10 @@ const SectionTitle = styled.h2`
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #2c3e50;
+  color: #000000;
   position: relative;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   
   &:after {
     content: '';
@@ -42,14 +44,14 @@ const SectionTitle = styled.h2`
     transform: translateX(-50%);
     width: 80px;
     height: 3px;
-    background: linear-gradient(to right, #ff6b6b, #ff8e8e);
+    background: linear-gradient(to right, #00f2fe, #4facfe);
   }
 `;
 
 const SectionSubtitle = styled.p`
   text-align: center;
   font-size: 1.1rem;
-  color: #666;
+  color: #000000;
   margin-bottom: 3rem;
   max-width: 600px;
   margin-left: auto;
@@ -62,14 +64,15 @@ const TestimonialsContainer = styled.div`
 `;
 
 const TestimonialCard = styled(motion.div)`
-  background: ${props => props.cardColor || 'white'};
+  background: #ffffff;
   padding: 2.5rem;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   position: relative;
   max-width: 800px;
   margin: 0 auto;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid #000000;
+  backdrop-filter: blur(10px);
 
   &::before {
     content: '';
@@ -78,7 +81,7 @@ const TestimonialCard = styled(motion.div)`
     left: 0;
     width: 100%;
     height: 100%;
-    background: ${props => props.gradientColor || 'linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 142, 142, 0.1) 100%)'};
+    background: ${props => props.gradientColor};
     border-radius: 15px;
     z-index: 0;
   }
@@ -90,13 +93,13 @@ const QuoteIcon = styled.div`
   left: 20px;
   width: 40px;
   height: 40px;
-  background: linear-gradient(to right, #ff6b6b, #ff8e8e);
+  background: linear-gradient(to right, #00f2fe, #4facfe);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  box-shadow: 0 4px 8px rgba(255, 107, 107, 0.3);
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 242, 254, 0.3);
 `;
 
 const StarsContainer = styled.div`
@@ -110,7 +113,7 @@ const StarsContainer = styled.div`
 const Quote = styled.p`
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #2c3e50;
+  color: #000000;
   margin-bottom: 2rem;
   position: relative;
   z-index: 1;
@@ -130,26 +133,30 @@ const AuthorImage = styled.div`
   height: 60px;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid #ff6b6b;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 3px solid #00f2fe;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  svg {
+    width: 70%;
+    height: 70%;
+    color: #000000;
   }
 `;
 
 const AuthorInfo = styled.div`
   h4 {
     margin: 0;
-    color: #2c3e50;
+    color: #000000;
     font-size: 1.2rem;
   }
 
   p {
     margin: 0;
-    color: #666;
+    color: #000000;
     font-size: 0.9rem;
   }
 `;
@@ -165,7 +172,7 @@ const NavButton = styled.button`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: white;
+  background: #ffffff;
   border: none;
   display: flex;
   align-items: center;
@@ -177,7 +184,7 @@ const NavButton = styled.button`
 
   &:hover {
     background: linear-gradient(to right, #ff6b6b, #ff8e8e);
-    color: white;
+    color: #ffffff;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(255, 107, 107, 0.3);
   }
@@ -217,15 +224,12 @@ const Testimonials = () => {
 
   const cardColors = [
     {
-      cardColor: '#ffffff',
       gradientColor: 'linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 142, 142, 0.1) 100%)'
     },
     {
-      cardColor: '#f8f9fa',
       gradientColor: 'linear-gradient(135deg, rgba(0, 123, 255, 0.1) 0%, rgba(0, 86, 179, 0.1) 100%)'
     },
     {
-      cardColor: '#fff5f5',
       gradientColor: 'linear-gradient(135deg, rgba(40, 167, 69, 0.1) 0%, rgba(33, 136, 56, 0.1) 100%)'
     }
   ];
@@ -237,7 +241,6 @@ const Testimonials = () => {
       author: {
         name: 'John Smith',
         role: 'Owner, Smith Trucking',
-        image: '/testimonials/john.jpg',
       },
     },
     {
@@ -246,7 +249,6 @@ const Testimonials = () => {
       author: {
         name: 'Sarah Johnson',
         role: 'Operations Manager, Johnson Logistics',
-        image: '/testimonials/sarah.jpg',
       },
     },
     {
@@ -255,7 +257,6 @@ const Testimonials = () => {
       author: {
         name: 'Mike Williams',
         role: 'Fleet Manager, Williams Transport',
-        image: '/testimonials/mike.jpg',
       },
     },
   ];
@@ -271,7 +272,7 @@ const Testimonials = () => {
           }
           return prevProgress + 0.5;
         });
-      }, 15); // Update progress every 15ms for smooth animation
+      }, 15);
     }
 
     return () => clearInterval(interval);
@@ -310,7 +311,6 @@ const Testimonials = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.5 }}
-              cardColor={cardColors[currentIndex].cardColor}
               gradientColor={cardColors[currentIndex].gradientColor}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
@@ -326,7 +326,7 @@ const Testimonials = () => {
               <Quote>{testimonials[currentIndex].quote}</Quote>
               <AuthorContainer>
                 <AuthorImage>
-                  <img src={testimonials[currentIndex].author.image} alt={testimonials[currentIndex].author.name} />
+                  <FaUser />
                 </AuthorImage>
                 <AuthorInfo>
                   <h4>{testimonials[currentIndex].author.name}</h4>
@@ -350,4 +350,4 @@ const Testimonials = () => {
   );
 };
 
-export default Testimonials; 
+export default Testimonials;
