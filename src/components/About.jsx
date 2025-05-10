@@ -30,7 +30,7 @@ const Container = styled.div`
 
 const SectionTitle = styled.h2`
   text-align: center;
-  font-size: 2.5rem;
+   font-size: clamp(2rem, 4vw, 2.8rem);
   margin-bottom: 3rem;
   color: #000000;
   position: relative;

@@ -90,7 +90,6 @@ const TruckCard = styled(motion.div)`
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: ${boxShadow};
   transition: all 0.4s ease;
   position: relative;
   height: 100%;
@@ -101,7 +100,6 @@ const TruckCard = styled(motion.div)`
 
   &:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
   }
@@ -221,10 +219,7 @@ const ServiceContent = styled.div`
 const ServiceTitle = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #ffffff;
   font-weight: 600;
   text-align: center;
 `;
@@ -241,7 +236,7 @@ const ServiceDescription = styled.p`
 const LearnMore = styled(Link)`
   display: inline-block;
   padding: 0.8rem 1.5rem;
-  background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+  background: linear-gradient(45deg, #0066cc, #0099ff);
   color: white;
   text-decoration: none;
   border-radius: 30px;
@@ -257,7 +252,7 @@ const LearnMore = styled(Link)`
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(45deg, #4ECDC4, #FF6B6B);
+    background: linear-gradient(45deg, #0099ff, #0066cc);
   }
 `;
 
@@ -396,7 +391,7 @@ const servicesData = [
 ];
 
 const rtsFinancialData = {
-  image: 'financial-services.jpg',
+  image: '/images/financial-services.jpg',
   title: 'RTS Financial Services',
   description: 'Comprehensive financial solutions for your transportation business.',
   features: [
@@ -411,7 +406,7 @@ const rtsFinancialData = {
 };
 
 const trackingDeviceData = {
-  image: 'tracking-device.jpg',
+  image: '/images/tracking-device.jpg',
   title: 'Advanced Tracking Solutions',
   description: 'State-of-the-art tracking devices for real-time fleet monitoring.',
   features: [

@@ -34,12 +34,15 @@ const Container = styled.div`
 
 const SectionTitle = styled.h2`
   text-align: center;
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 4vw, 2.5rem);
   margin-bottom: 1rem;
   color: #000000;
   position: relative;
   text-transform: uppercase;
   letter-spacing: 2px;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   
   &:after {
     content: '';
@@ -60,12 +63,15 @@ const SectionTitle = styled.h2`
 
 const SectionSubtitle = styled.p`
   text-align: center;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
   color: #000000;
   margin-bottom: 3rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 `;
 
 const ContactGrid = styled.div`

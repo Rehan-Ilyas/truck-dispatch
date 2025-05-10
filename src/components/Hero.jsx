@@ -42,14 +42,17 @@ const HeroContent = styled(motion.div)`
 `;
 
 const Title = styled.h1`
-  font-size: 3.5rem;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   margin-bottom: 1.5rem;
   line-height: 1.2;
   color: white;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 800;
-  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Stronger shadow for contrast */
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 
   @media (max-width: 768px) {
     font-size: 2.5rem;
@@ -57,9 +60,12 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.p`
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
   margin-bottom: 2rem;
   line-height: 1.6;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 
   @media (max-width: 768px) {
     font-size: 1.1rem;

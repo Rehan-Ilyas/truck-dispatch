@@ -9,10 +9,11 @@ const DetailSection = styled.section`
   padding: 0;
   background: #f8f9fa;
   min-height: 100vh;
+  font-family: 'Arial', sans-serif;
 `;
 
 const HeroImage = styled.div`
-  height: 50vh;
+  height: 60vh;
   position: relative;
   overflow: hidden;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
@@ -37,34 +38,35 @@ const HeroContent = styled.div`
   padding: 2rem;
   color: white;
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  text-align: center;
 `;
 
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 4rem 2rem;
+  box-sizing: border-box;
 `;
 
 const DetailContent = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 1fr;
+  gap: 3rem;
   align-items: start;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
   }
 `;
 
-
-
 const DetailText = styled.div`
   h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 1.5rem;
     color: #2c3e50;
     position: relative;
+    font-weight: 600;
     
     &::after {
       content: '';
@@ -82,6 +84,7 @@ const DetailText = styled.div`
     line-height: 1.8;
     margin-bottom: 2rem;
     font-size: 1.1rem;
+    text-align: justify;
   }
 `;
 
@@ -90,18 +93,19 @@ const FeaturesList = styled.ul`
   padding: 0;
   margin: 2rem 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1.5rem;
 
   li {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 1rem;
+    padding: 1.2rem;
     background: white;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    font-size: 1rem;
 
     &:hover {
       transform: translateY(-5px);
@@ -109,7 +113,7 @@ const FeaturesList = styled.ul`
 
     svg {
       color: #28a745;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
   }
 `;
@@ -126,6 +130,8 @@ const BackButton = styled(Link)`
   font-weight: 500;
   transition: all 0.3s ease;
   margin-top: 2rem;
+  justify-self: flex-start;
+  width: fit-content;
 
   &:hover {
     background: #1a252f;
@@ -144,82 +150,88 @@ const ServiceDetail = () => {
   const services = {
     'box-truck': {
       title: 'Box Truck Services',
-      image:   '/box-truck-removebg-preview.png',
-      description: 'Our box truck services are perfect for local and regional deliveries. With a capacity of up to 26,000 lbs and 1,700 cubic feet, our box trucks can handle a wide range of cargo types.',
+      image: '/box-truck-removebg-preview.png',
+      description:
+        'Our box truck services are perfect for local and regional deliveries. With a capacity of up to 26,000 lbs and 1,700 cubic feet, our box trucks can handle a wide range of cargo types.',
       features: [
         'Capacity: 26,000 lbs',
         'Cargo Space: 1,700 cubic feet',
         'Perfect for local and regional deliveries',
         'Equipped with liftgate for easy loading',
         '24/7 tracking and monitoring',
-        'Experienced drivers with clean records'
-      ]
+        'Experienced drivers with clean records',
+      ],
     },
     'dry-van': {
       title: 'Dry Van Services',
       image: '/dry-van-removebg-preview.png',
-      description: 'Our dry van services provide secure and efficient transportation for your cargo. With weather-resistant containers and advanced security features, your goods will arrive safely at their destination.',
+      description:
+        'Our dry van services provide secure and efficient transportation for your cargo. With weather-resistant containers and advanced security features, your goods will arrive safely at their destination.',
       features: [
         'Weather-resistant containers',
         'Advanced security features',
         'Multiple size options available',
         'Real-time cargo tracking',
         'Temperature monitoring',
-        'Dedicated customer support'
-      ]
+        'Dedicated customer support',
+      ],
     },
     'reefer': {
       title: 'Reefer Services',
       image: '/refer-truck-removebg-preview.png',
-      description: 'Our refrigerated truck services ensure your temperature-sensitive goods are transported at the perfect temperature. With state-of-the-art cooling systems and 24/7 monitoring, your perishable items are in safe hands.',
+      description:
+        'Our refrigerated truck services ensure your temperature-sensitive goods are transported at the perfect temperature. With state-of-the-art cooling systems and 24/7 monitoring, your perishable items are in safe hands.',
       features: [
         'Temperature range: -20°F to 70°F',
         '24/7 temperature monitoring',
         'Advanced cooling systems',
         'Real-time temperature alerts',
         'Experienced cold chain logistics',
-        'Compliance with food safety standards'
-      ]
+        'Compliance with food safety standards',
+      ],
     },
     'power-only': {
       title: 'Power Only Services',
       image: '/power_only-removebg-preview.png',
-      description: 'Our power-only services provide flexible solutions for your transportation needs. We supply the truck and driver while you provide the trailer, giving you maximum flexibility and control.',
+      description:
+        'Our power-only services provide flexible solutions for your transportation needs. We supply the truck and driver while you provide the trailer, giving you maximum flexibility and control.',
       features: [
         'Flexible scheduling',
         'Experienced drivers',
         'Multiple truck options',
         '24/7 dispatch support',
         'Real-time tracking',
-        'Competitive rates'
-      ]
+        'Competitive rates',
+      ],
     },
     'hotshot': {
       title: 'Hotshot Services',
       image: '/hotshot-truck.png',
-      description: 'Our hotshot services are perfect for time-sensitive deliveries. With smaller, more agile vehicles, we can get your cargo where it needs to be quickly and efficiently.',
+      description:
+        'Our hotshot services are perfect for time-sensitive deliveries. With smaller, more agile vehicles, we can get your cargo where it needs to be quickly and efficiently.',
       features: [
         'Fast delivery times',
         'Smaller, agile vehicles',
         'Direct point-to-point service',
         'Real-time tracking',
         'Flexible scheduling',
-        'Competitive pricing'
-      ]
+        'Competitive pricing',
+      ],
     },
     'flatbed': {
       title: 'Flatbed / Step Deck Services',
       image: '/flat-bed.jpg',
-      description: 'Our flatbed and step deck services are designed for oversized and heavy loads. With specialized equipment and experienced drivers, we can handle even the most challenging cargo.',
+      description:
+        'Our flatbed and step deck services are designed for oversized and heavy loads. With specialized equipment and experienced drivers, we can handle even the most challenging cargo.',
       features: [
         'Capacity up to 48,000 lbs',
         'Multiple deck height options',
         'Specialized loading equipment',
         'Oversized load permits',
         'Experienced drivers',
-        '24/7 support'
-      ]
-    }
+        '24/7 support',
+      ],
+    },
   };
 
   const service = services[serviceType];
@@ -284,4 +296,4 @@ const ServiceDetail = () => {
   );
 };
 
-export default ServiceDetail; 
+export default ServiceDetail;

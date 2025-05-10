@@ -41,13 +41,16 @@ const Container = styled.div`
 
 const SectionTitle = styled.h2`
   text-align: center;
-  font-size: 2.8rem;
+  font-size: clamp(2rem, 4vw, 2.8rem);
   color: #ffffff;
   margin-bottom: 1rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   position: relative;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 
   &::after {
     content: '';
@@ -64,13 +67,16 @@ const SectionTitle = styled.h2`
 
 const SectionSubtitle = styled.p`
   text-align: center;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
   color: #d1d1d1;
   margin-bottom: 3.5rem;
   max-width: 550px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.7;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 `;
 
 const PricingGrid = styled.div`
