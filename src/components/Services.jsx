@@ -12,7 +12,8 @@ import {
   FaBolt,
   FaShippingFast,
   FaLayerGroup,
-  FaCheckCircle
+  FaCheckCircle,
+  FaWhatsapp
 } from 'react-icons/fa';
 
 // Common styles
@@ -280,6 +281,30 @@ const FeatureItem = styled.li`
   }
 `;
 
+const WhatsAppButton = styled(motion.a)`
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #25D366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 35px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
+`;
+
 // Service data
 const servicesData = [
   {
@@ -486,6 +511,18 @@ const Services = () => {
           </TrackingCard>
         </TrackingSection>
       </Container>
+      <WhatsAppButton
+        href="https://wa.me/923135022454"
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <FaWhatsapp />
+      </WhatsAppButton>
     </ServicesSection>
   );
 };
