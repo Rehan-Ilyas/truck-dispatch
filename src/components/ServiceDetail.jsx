@@ -243,7 +243,16 @@ const ServiceDetail = () => {
 
   return (
     <DetailSection>
-      <HeroImage style={{ backgroundImage: `url(${service.image})` }}>
+    <HeroImage
+  style={{
+    marginTop: '5%',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'contain',
+    backgroundPosition: 'center',
+    backgroundImage: `url(${service.image})`
+  }}
+>
+
         <HeroContent>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
